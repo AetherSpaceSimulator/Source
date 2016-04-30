@@ -1,0 +1,94 @@
+Convex hull decomposition shapes for accurate collision detections.
+Shape Count: 15
+
+Shapes: 
+
+Shape 1 type: convex hull
+Shape 1 scale: 1 1 1
+Shape 1 position: -0.017225 0.097975 0.135645
+Shape 1 rotation: 0 0 0 1
+Shape 1 convex file: models\emu\convex_decomposition_collision\001.txt
+
+Shape 2 type: convex hull
+Shape 2 scale: 1 1 1
+Shape 2 position: -0.323365 0.11459 -0.059135
+Shape 2 rotation: 0 0 0 1
+Shape 2 convex file: models\emu\convex_decomposition_collision\002.txt
+
+Shape 3 type: convex hull
+Shape 3 scale: 1 1 1
+Shape 3 position: 0.29537 0.111745 -0.099825
+Shape 3 rotation: 0 0 0 1
+Shape 3 convex file: models\emu\convex_decomposition_collision\003.txt
+
+Shape 4 type: convex hull
+Shape 4 scale: 1 1 1
+Shape 4 position: -0.329745 -0.035 -0.31087
+Shape 4 rotation: 0 0 0 1
+Shape 4 convex file: models\emu\convex_decomposition_collision\004.txt
+
+Shape 5 type: convex hull
+Shape 5 scale: 1 1 1
+Shape 5 position: 0.28998 -0.031905 -0.30261
+Shape 5 rotation: 0 0 0 1
+Shape 5 convex file: models\emu\convex_decomposition_collision\005.txt
+
+Shape 6 type: convex hull
+Shape 6 scale: 1 1 1
+Shape 6 position: 0.286435 0.242065 -0.018655
+Shape 6 rotation: 0 0 0 1
+Shape 6 convex file: models\emu\convex_decomposition_collision\006.txt
+
+Shape 7 type: convex hull
+Shape 7 scale: 1 1 1
+Shape 7 position: -0.305285 0.462665 -0.00621
+Shape 7 rotation: 0 0 0 1
+Shape 7 convex file: models\emu\convex_decomposition_collision\007.txt
+
+Shape 8 type: convex hull
+Shape 8 scale: 1 1 1
+Shape 8 position: -0.29472 0.1711 0.25902
+Shape 8 rotation: 0 0 0 1
+Shape 8 convex file: models\emu\convex_decomposition_collision\008.txt
+
+Shape 9 type: convex hull
+Shape 9 scale: 1 1 1
+Shape 9 position: 0.257645 -0.004235 0.23881
+Shape 9 rotation: 0 0 0 1
+Shape 9 convex file: models\emu\convex_decomposition_collision\009.txt
+
+Shape 10 type: convex hull
+Shape 10 scale: 1 1 1
+Shape 10 position: -0.29984 -0.38333 0.21694
+Shape 10 rotation: 0 0 0 1
+Shape 10 convex file: models\emu\convex_decomposition_collision\010.txt
+
+Shape 11 type: convex hull
+Shape 11 scale: 1 1 1
+Shape 11 position: 0.26111 -0.49375 -0.002365
+Shape 11 rotation: 0 0 0 1
+Shape 11 convex file: models\emu\convex_decomposition_collision\011.txt
+
+Shape 12 type: convex hull
+Shape 12 scale: 1 1 1
+Shape 12 position: -0.01994 -0.42217 -0.1524
+Shape 12 rotation: 0 0 0 1
+Shape 12 convex file: models\emu\convex_decomposition_collision\012.txt
+
+Shape 13 type: convex hull
+Shape 13 scale: 1 1 1
+Shape 13 position: -0.019925 -0.66193 -0.174265
+Shape 13 rotation: 0 0 0 1
+Shape 13 convex file: models\emu\convex_decomposition_collision\013.txt
+
+Shape 14 type: convex hull
+Shape 14 scale: 1 1 1
+Shape 14 position: -0.139675 -0.87835 -0.20997
+Shape 14 rotation: 0 0 0 1
+Shape 14 convex file: models\emu\convex_decomposition_collision\014.txt
+
+Shape 15 type: convex hull
+Shape 15 scale: 1 1 1
+Shape 15 position: 0.09741 -0.878775 -0.20934
+Shape 15 rotation: 0 0 0 1
+Shape 15 convex file: models\emu\convex_decomposition_collision\015.txt

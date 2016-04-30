@@ -1,0 +1,8 @@
+Primitive shape for accurate collision detections.
+
+Primitive data:
+
+Primivive type: box
+Primivive scale: 0.5 0.5 0.5
+Primivive position: 0 0 0
+Primivive rotation: 0 0 0 1
