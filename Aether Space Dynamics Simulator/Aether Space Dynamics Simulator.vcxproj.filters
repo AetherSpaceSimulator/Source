@@ -1,0 +1,349 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="shaders">
+      <UniqueIdentifier>{ccff9ace-baaf-4bcb-984c-f18512b3c058}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Aether Space Dynamics Simulator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="showMaster.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="win_system.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="directx11.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="basic_shader.h">
+      <Filter>shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="atmosphere_shader.h">
+      <Filter>shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="directx_input.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vecquat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fps.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ephemeris.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gui.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ventana.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="text_box.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="text.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="font.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="font_shader.h">
+      <Filter>shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="colors.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bitmap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="textureshaderclass.h">
+      <Filter>shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="dumb_shader.h">
+      <Filter>shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="line_class.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="light.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rendertextureclass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="depthshaderclass.h">
+      <Filter>shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="depthshaderclass_tr.h">
+      <Filter>shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stars.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="auto.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="latlong.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="solve.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="kepler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="aerodynamics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="111.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="particle_shader.h">
+      <Filter>shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="instanced_quad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="instance_shader.h">
+      <Filter>shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="object_creator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="script.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="moving_parts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bullet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Aether Space Dynamics Simulator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="showMaster.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="win_system.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="directx11.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="basic_shader.cpp">
+      <Filter>shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="atmosphere_shader.cpp">
+      <Filter>shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="directx_input.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="object.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ephemeris.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gui.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="text_box.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="text.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="font.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="font_shader.cpp">
+      <Filter>shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="colors.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bitmap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="textureshaderclass.cpp">
+      <Filter>shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="dumb_shader.cpp">
+      <Filter>shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="line_class.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="light.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="rendertextureclass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="depthshaderclass.cpp">
+      <Filter>shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="depthshaderclass_tr.cpp">
+      <Filter>shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="stars.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="auto.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="latlong.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="kepler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="aerodynamics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="particle_shader.cpp">
+      <Filter>shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="instanced_quad.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="instance_shader.cpp">
+      <Filter>shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="object_creator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="script.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moving_parts.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bullet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Aether Space Dynamics Simulator.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shaders\Font shader\font.ps">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\Font shader\font.vs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\Atmosphere shader\atmosphere.ps">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\Atmosphere shader\atmosphere.vs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\Basic shader\basic.vs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\Basic shader\basic.ps">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\Depth shader\depth.ps">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\Depth shader\depth.vs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\Depth transparent shader\depth_tr.ps">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\Depth transparent shader\depth_tr.vs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\Dumb shader\dumb.ps">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\Dumb shader\dumb.vs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\Texture shader\texture.ps">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\Texture shader\texture.vs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="packages.config" />
+    <None Include="shaders\Particles\particle.vs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\Particles\particle.ps">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\Instance\instance.ps">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\Instance\instance.vs">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="textures\Aether.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

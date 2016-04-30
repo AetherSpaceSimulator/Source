@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\directxtk_desktop_2013.2015.11.30.1\build\native\directxtk_desktop_2013.props" Condition="Exists('..\packages\directxtk_desktop_2013.2015.11.30.1\build\native\directxtk_desktop_2013.props')" />
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{3B48DD30-2A92-4A22-8019-201E196AE864}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>AetherSpaceDynamicsSimulator</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <LibraryPath>C:\Program Files %28x86%29\Windows Kits\8.1\Lib\winv6.3\um\x64;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\bullet3-2.83.7\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <BrowseInformation>true</BrowseInformation>
+      <AdditionalIncludeDirectories>C:\bullet3-2.83.7\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <StackReserveSize>
+      </StackReserveSize>
+      <HeapReserveSize>
+      </HeapReserveSize>
+      <HeapCommitSize>
+      </HeapCommitSize>
+      <StackCommitSize>
+      </StackCommitSize>
+    </Link>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="aerodynamics.h" />
+    <ClInclude Include="Aether Space Dynamics Simulator.h" />
+    <ClInclude Include="atmosphere_shader.h" />
+    <ClInclude Include="auto.h" />
+    <ClInclude Include="basic_shader.h" />
+    <ClInclude Include="bitmap.h" />
+    <ClInclude Include="bullet.h" />
+    <ClInclude Include="camera.h" />
+    <ClInclude Include="colors.h" />
+    <ClInclude Include="depthshaderclass.h" />
+    <ClInclude Include="depthshaderclass_tr.h" />
+    <ClInclude Include="directx11.h" />
+    <ClInclude Include="directx_input.h" />
+    <ClInclude Include="dumb_shader.h" />
+    <ClInclude Include="ephemeris.h" />
+    <ClInclude Include="font.h" />
+    <ClInclude Include="font_shader.h" />
+    <ClInclude Include="fps.h" />
+    <ClInclude Include="gui.h" />
+    <ClInclude Include="instanced_quad.h" />
+    <ClInclude Include="instance_shader.h" />
+    <ClInclude Include="kepler.h" />
+    <ClInclude Include="latlong.h" />
+    <ClInclude Include="light.h" />
+    <ClInclude Include="line_class.h" />
+    <ClInclude Include="model.h" />
+    <ClInclude Include="111.h" />
+    <ClInclude Include="moving_parts.h" />
+    <ClInclude Include="object.h" />
+    <ClInclude Include="object_creator.h" />
+    <ClInclude Include="particle_shader.h" />
+    <ClInclude Include="rendertextureclass.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="script.h" />
+    <ClInclude Include="showMaster.h" />
+    <ClInclude Include="solve.h" />
+    <ClInclude Include="stars.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="text.h" />
+    <ClInclude Include="texture.h" />
+    <ClInclude Include="textureshaderclass.h" />
+    <ClInclude Include="text_box.h" />
+    <ClInclude Include="vecquat.h" />
+    <ClInclude Include="ventana.h" />
+    <ClInclude Include="win_system.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="aerodynamics.cpp" />
+    <ClCompile Include="Aether Space Dynamics Simulator.cpp" />
+    <ClCompile Include="atmosphere_shader.cpp" />
+    <ClCompile Include="auto.cpp" />
+    <ClCompile Include="basic_shader.cpp" />
+    <ClCompile Include="bitmap.cpp" />
+    <ClCompile Include="bullet.cpp" />
+    <ClCompile Include="camera.cpp" />
+    <ClCompile Include="colors.cpp" />
+    <ClCompile Include="depthshaderclass.cpp" />
+    <ClCompile Include="depthshaderclass_tr.cpp" />
+    <ClCompile Include="directx11.cpp" />
+    <ClCompile Include="directx_input.cpp" />
+    <ClCompile Include="dumb_shader.cpp" />
+    <ClCompile Include="ephemeris.cpp" />
+    <ClCompile Include="font.cpp" />
+    <ClCompile Include="font_shader.cpp" />
+    <ClCompile Include="gui.cpp" />
+    <ClCompile Include="instanced_quad.cpp" />
+    <ClCompile Include="instance_shader.cpp" />
+    <ClCompile Include="kepler.cpp" />
+    <ClCompile Include="latlong.cpp" />
+    <ClCompile Include="light.cpp" />
+    <ClCompile Include="line_class.cpp" />
+    <ClCompile Include="model.cpp" />
+    <ClCompile Include="moving_parts.cpp" />
+    <ClCompile Include="object.cpp" />
+    <ClCompile Include="object_creator.cpp" />
+    <ClCompile Include="particle_shader.cpp" />
+    <ClCompile Include="rendertextureclass.cpp" />
+    <ClCompile Include="script.cpp" />
+    <ClCompile Include="showMaster.cpp" />
+    <ClCompile Include="stars.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="text.cpp" />
+    <ClCompile Include="texture.cpp" />
+    <ClCompile Include="textureshaderclass.cpp" />
+    <ClCompile Include="text_box.cpp" />
+    <ClCompile Include="win_system.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Aether Space Dynamics Simulator.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="textures\Aether.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="shaders\Atmosphere shader\atmosphere.ps" />
+    <None Include="shaders\Atmosphere shader\atmosphere.vs" />
+    <None Include="shaders\Basic shader\basic.ps" />
+    <None Include="shaders\Basic shader\basic.vs" />
+    <None Include="shaders\Depth shader\depth.ps" />
+    <None Include="shaders\Depth shader\depth.vs" />
+    <None Include="shaders\Depth transparent shader\depth_tr.ps" />
+    <None Include="shaders\Depth transparent shader\depth_tr.vs" />
+    <None Include="shaders\Dumb shader\dumb.ps" />
+    <None Include="shaders\Dumb shader\dumb.vs" />
+    <None Include="shaders\Font shader\font.ps" />
+    <None Include="shaders\Font shader\font.vs" />
+    <None Include="shaders\Instance\instance.ps" />
+    <None Include="shaders\Instance\instance.vs" />
+    <None Include="shaders\Particles\particle.ps" />
+    <None Include="shaders\Particles\particle.vs" />
+    <None Include="shaders\Texture shader\texture.ps" />
+    <None Include="shaders\Texture shader\texture.vs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\..\bullet3-2.83.7\buildx64\src\BulletCollision\BulletCollision.vcxproj">
+      <Project>{c9519b47-666a-37ef-b28a-cde6e04d46d0}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\..\bullet3-2.83.7\buildx64\src\BulletDynamics\BulletDynamics.vcxproj">
+      <Project>{8e3c0c36-6309-3a96-8de1-75b01782aa00}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\..\bullet3-2.83.7\buildx64\src\LinearMath\LinearMath.vcxproj">
+      <Project>{64409c8d-70c1-3ee6-9631-2a15ad236c15}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\packages\directxtk_desktop_2013.2015.11.30.1\build\native\directxtk_desktop_2013.targets" Condition="Exists('..\packages\directxtk_desktop_2013.2015.11.30.1\build\native\directxtk_desktop_2013.targets')" />
+  </ImportGroup>
+</Project>
