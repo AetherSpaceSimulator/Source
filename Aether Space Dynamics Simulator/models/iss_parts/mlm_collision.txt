@@ -1,0 +1,10 @@
+Compound shape for accurate collision detections.
+Primitive count: 1
+
+Primitive data:
+
+Primivive 1 type: convex hull
+Primivive 1 scale: 1 1 1
+Primivive 1 position: 0 0 0
+Primivive 1 rotation: 0 0 0 1
+Primivive 1 file: models\iss_parts\convex_hull\mlm_001.txt

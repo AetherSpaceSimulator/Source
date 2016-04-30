@@ -1,0 +1,9 @@
+Compound shape for accurate collision detections.
+shape count: 1
+
+Primitive data:
+
+Primivive 1 type: cylinder
+Primivive 1 scale: 0.4545 0.0.855 0.4545
+Primivive 1 position: 0 -0.025445 0
+Primivive 1 rotation: 0 0 0 1

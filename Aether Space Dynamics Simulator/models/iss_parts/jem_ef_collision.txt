@@ -1,0 +1,15 @@
+Compound shape for accurate collision detections.
+Shape count: 2
+
+Shapes data:
+
+Shape 1 type: box
+Shape 1 scale: 0.2475 0.0985 0.176
+Shape 1 position: -0.17746 0 -0.068785
+Shape 1 rotation: 0 0 0 1
+
+Shape 2 type: convex hull
+Shape 2 scale: 1 1 1
+Shape 2 position: 0.290675 0.01296 0.15209
+Shape 2 rotation: 0 0 0 1
+Shape 2 convex file: models\iss_parts\convex_hull\jem_ef_001.txt

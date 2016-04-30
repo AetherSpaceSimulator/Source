@@ -1,0 +1,15 @@
+Primitive shape for accurate collision detections.
+shape count: 2
+
+Primitive data:
+
+Primivive 1 type: convex hull
+Primivive 1 scale: 1 1 1
+Primivive 1 position: -0.000575 0.22256 0.002465
+Primivive 1 rotation: 0 0 0 1
+Primivive 1 file: models\iss_parts\convex_hull\rm_001.txt
+
+Primivive 2 type: sphere
+Primivive 2 scale: 0.286 0.286 0.286
+Primivive 2 position: 0 -1.23414 0
+Primivive 2 rotation: 0 0 0 1

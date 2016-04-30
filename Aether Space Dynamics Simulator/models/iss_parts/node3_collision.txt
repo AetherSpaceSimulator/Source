@@ -1,0 +1,25 @@
+Compound shape for accurate collision detections.
+Primitive count: 4
+
+Primitive data:
+
+Primivive 1 type: cylinder
+Primivive 1 scale: 0.5 0.981 0.5
+Primivive 1 position: 0 0.0592 0
+Primivive 1 rotation: 0 0 0 1
+
+Primivive 2 type: cylinder
+Primivive 2 scale: 0.2865 0.0815 0.2865
+Primivive 2 position: -0.003385 -0.950385 0.005305
+Primivive 2 rotation: 0 0 0 1
+
+Primivive 3 type: cylinder
+Primivive 3 scale: 0.2115 0.1005 0.2115
+Primivive 3 position: 0.00349 -1.404165 -0.17655
+Primivive 3 rotation: 0 0 0 1
+
+Primivive 4 type: convex hull
+Primivive 4 scale: 1 1 1
+Primivive 4 position: 0.002495 -1.14651 -0.06998
+Primivive 4 rotation: 0 0 0 1
+Primivive 4 file: models\iss_parts\convex_hull\node3_001.txt

@@ -1,0 +1,41 @@
+Compound shape for accurate collision detections.
+Primitive count: 7
+
+Primitive data:
+
+Primivive 1 type: cylinder
+Primivive 1 scale: 0.4395 0.1915 0.4395
+Primivive 1 position: 0.288085 0 -0.01038
+Primivive 1 rotation: 0 0 0.707 0.707
+
+Primivive 2 type: cylinder
+Primivive 2 scale: 0.1865 0.23 0.1865
+Primivive 2 position: -0.25628 0 -0.01038
+Primivive 2 rotation: 0 0 0.707 0.707
+
+Primivive 3 type: cylinder
+Primivive 3 scale: 0.128 0.1425 0.128
+Primivive 3 position: 0.254635 0.495705 -0.19285
+Primivive 3 rotation: 0 0 0.707 0.707
+
+Primivive 4 type: cylinder
+Primivive 4 scale: 0.128 0.1425 0.128
+Primivive 4 position: 0.254635 -0.091235 0.46708
+Primivive 4 rotation: 0 0 0.707 0.707
+
+Primivive 5 type: cylinder
+Primivive 5 scale: 0.128 0.1425 0.128
+Primivive 5 position: 0.254635 -0.3801450.3059
+Primivive 5 rotation: 0 0 0.707 0.707
+
+Primivive 6 type: cylinder
+Primivive 6 scale: 0.128 0.1425 0.128
+Primivive 6 position: 0.254635 -0.495705 -0.022545
+Primivive 6 rotation: 0 0 0.707 0.707
+
+Primivive 7 type: cone
+Primivive 7 radius: 0.87
+Primivive 7 height: 0.4
+Primivive 7 scale: 0.5 0.5 0.5
+Primivive 7 position: 0 0 0
+Primivive 7 rotation: 0 0 0.707 -0.707

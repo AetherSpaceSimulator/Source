@@ -1,0 +1,20 @@
+Primitive shape for accurate collision detections.
+shape count: 3
+
+Primitive data:
+
+Primivive 1 type: convex hull
+Primivive 1 scale: 1 1 1
+Primivive 1 position: -0.000115 -0.003215 0.071745
+Primivive 1 rotation: 0 0 0 1
+Primivive 1 file: models\iss_parts\convex_hull\zarya_001.txt
+
+Primivive 2 type: sphere
+Primivive 2 scale: 0.0965 0.0965 0.0965
+Primivive 2 position: 0.002645 -0.008025 -0.406295
+Primivive 2 rotation: 0 0 0 1
+
+Primivive 3 type: box
+Primivive 3 scale: 1.128 0.101 0.006
+Primivive 3 position: 0 -0.00209 -0.043675
+Primivive 3 rotation: 0.567 0 0 0.824

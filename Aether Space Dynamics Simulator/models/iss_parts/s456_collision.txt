@@ -1,0 +1,9 @@
+Primitive shape for accurate collision detections.
+shape count: 1
+
+Primitive data:
+
+Primivive type: cube
+Primivive scale: 0.4935 0.0615 0.05
+Primivive position: 0 0.004075 0
+Primivive rotation: 0 0 0 1
