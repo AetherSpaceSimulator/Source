@@ -1,0 +1,304 @@
+#include "stdafx.h"
+#include "text.h"
+
+TextClass::TextClass()
+{
+	total_sentences = 0;
+
+	m_Font = nullptr;
+	m_FontShader = nullptr;
+	m_sentence = nullptr;
+}
+
+
+TextClass::TextClass(const TextClass& other)
+{
+}
+
+
+TextClass::~TextClass()
+{
+	SAFE_DELETE_ARRAY(m_sentence);
+	SAFE_DELETE(m_FontShader);
+	SAFE_DELETE(m_Font);
+}
+
+
+bool TextClass::Initialize(Matrix ortho_, HWND hwnd, int screenWidth, int screenHeight)
+{
+	bool result;
+
+	ortho_matrix = ortho_;
+
+	// Store the screen width and height.
+	m_screenWidth = screenWidth;
+	m_screenHeight = screenHeight;
+
+	// Create the font object.
+	m_Font = new FontClass;
+	if (!m_Font)
+	{
+		return false;
+	}
+
+	// Initialize the font object.
+	result = m_Font->Initialize("textures/font/fontdata.txt", "textures/font/font_extended.png");
+	if (!result)
+	{
+		MessageBox(hwnd, L"Could not initialize the font object.", L"Error", MB_OK);
+		return false;
+	}
+
+	// Create the font shader object.
+	m_FontShader = new FontShaderClass;
+	if (!m_FontShader)
+	{
+		return false;
+	}
+
+	// Initialize the font shader object.
+	result = m_FontShader->Initialize(hwnd);
+	if (!result)
+	{
+		MessageBox(hwnd, L"Could not initialize the font shader object.", L"Error", MB_OK);
+		return false;
+	}
+
+	return true;
+}
+
+bool TextClass::Render()
+{
+	for (int n = 0; n < total_sentences; n++)
+	{
+		if (m_sentence[n].visible)
+		{
+			if (!RenderSentence(m_sentence[n])) return false;
+		}
+	}
+
+	return true;
+}
+
+bool TextClass::InitializeSentence(int array_number, int maxLength, bool visible_)
+{
+	SentenceType* sentence = &m_sentence[array_number];
+	VertexType* vertices;
+	vertices = nullptr;
+	unsigned long* indices;
+	D3D11_BUFFER_DESC vertexBufferDesc, indexBufferDesc;
+	D3D11_SUBRESOURCE_DATA vertexData, indexData;
+	HRESULT result;
+	int i;
+
+	// Initialize the sentence buffers to null.
+	sentence->vertexBuffer = 0;
+	sentence->indexBuffer = 0;
+
+	// Set the maximum length of the sentence.
+	sentence->maxLength = maxLength;
+
+	// Set the number of vertices in the vertex array.
+	sentence->vertexCount = 6 * maxLength;
+
+	// Set the number of indexes in the index array.
+	sentence->indexCount = sentence->vertexCount;
+
+	sentence->visible = visible_;
+
+	// Create the vertex array.
+	vertices = new VertexType[sentence->vertexCount];
+	if (!vertices)
+	{
+		return false;
+	}
+
+	// Create the index array.
+	indices = new unsigned long[sentence->indexCount];
+	if (!indices)
+	{
+		return false;
+	}
+
+	// Initialize vertex array to zeros at first.
+	memset(vertices, 0, (sizeof(VertexType)* sentence->vertexCount));
+
+	// Initialize the index array.
+	for (i = 0; i<sentence->indexCount; i++)
+	{
+		indices[i] = i;
+	}
+
+	// Set up the description of the dynamic vertex buffer.
+	vertexBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
+	vertexBufferDesc.ByteWidth = sizeof(VertexType)* sentence->vertexCount;
+	vertexBufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+	vertexBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+	vertexBufferDesc.MiscFlags = 0;
+	vertexBufferDesc.StructureByteStride = 0;
+
+	// Give the subresource structure a pointer to the vertex data.
+	vertexData.pSysMem = vertices;
+	vertexData.SysMemPitch = 0;
+	vertexData.SysMemSlicePitch = 0;
+
+	// Create the vertex buffer.
+	result = D3D_device->CreateBuffer(&vertexBufferDesc, &vertexData, &sentence->vertexBuffer);
+	if (FAILED(result))
+	{
+		return false;
+	}
+
+	// Set up the description of the static index buffer.
+	indexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
+	indexBufferDesc.ByteWidth = sizeof(unsigned long)* sentence->indexCount;
+	indexBufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
+	indexBufferDesc.CPUAccessFlags = 0;
+	indexBufferDesc.MiscFlags = 0;
+	indexBufferDesc.StructureByteStride = 0;
+
+	// Give the subresource structure a pointer to the index data.
+	indexData.pSysMem = indices;
+	indexData.SysMemPitch = 0;
+	indexData.SysMemSlicePitch = 0;
+
+	// Create the index buffer.
+	result = D3D_device->CreateBuffer(&indexBufferDesc, &indexData, &sentence->indexBuffer);
+	if (FAILED(result))
+	{
+		return false;
+	}
+
+	SAFE_DELETE_ARRAY(vertices);
+	SAFE_DELETE_ARRAY(indices);
+
+	return true;
+}
+
+bool TextClass::UpdateSentence(SentenceType* sentence, std::string text, int positionX, int positionY, Color color_)
+{
+	int numLetters;
+	VertexType* vertices;
+	float drawX, drawY;
+	HRESULT result;
+	D3D11_MAPPED_SUBRESOURCE mappedResource;
+	VertexType* verticesPtr;
+
+	// Store the color of the sentence.
+	sentence->Dcolor = color_;
+
+	// Get the number of letters in the sentence.
+	numLetters = int(text.size());
+
+	// Check for possible buffer overflow.
+	if (numLetters > sentence->maxLength)
+	{
+		MessageBoxA(0, "El tamanho del mensaje es mayor que el maximo soportado.", std::to_string(sentence->maxLength).c_str(), MB_OK);
+		return false;
+	}
+
+	// Create the vertex array.
+	vertices = new VertexType[sentence->vertexCount];
+	if (!vertices)
+	{
+		return false;
+	}
+
+	// Initialize vertex array to zeros at first.
+	memset(vertices, 0, (sizeof(VertexType)* sentence->vertexCount));
+
+	// Calculate the X and Y pixel position on the screen to start drawing to.
+	drawX = (float)(((m_screenWidth / 2) * -1) + positionX);
+	drawY = (float)((m_screenHeight / 2) - positionY);
+
+	// Use the font class to build the vertex array from the sentence text and sentence draw location.
+	m_Font->BuildVertexArray((void*)vertices, text, drawX, drawY);
+
+	// Lock the vertex buffer so it can be written to.
+	result = D3D_context->Map(sentence->vertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);
+	if (FAILED(result))
+	{
+		return false;
+	}
+
+	// Get a pointer to the data in the vertex buffer.
+	verticesPtr = (VertexType*)mappedResource.pData;
+
+	// Copy the data into the vertex buffer.
+	memcpy(verticesPtr, (void*)vertices, (sizeof(VertexType)* sentence->vertexCount));
+
+	// Unlock the vertex buffer.
+	D3D_context->Unmap(sentence->vertexBuffer, 0);
+
+	// Release the vertex array as it is no longer needed.
+	SAFE_DELETE_ARRAY(vertices);
+
+	return true;
+}
+
+bool TextClass::RenderSentence(SentenceType& sentence)
+{
+	unsigned int stride, offset;
+	Color pixelColor;
+	bool result;
+
+
+	// Set vertex buffer stride and offset.
+	stride = sizeof(VertexType);
+	offset = 0;
+
+	// Set the vertex buffer to active in the input assembler so it can be rendered.
+	D3D_context->IASetVertexBuffers(0, 1, &sentence.vertexBuffer, &stride, &offset);
+
+	// Set the index buffer to active in the input assembler so it can be rendered.
+	D3D_context->IASetIndexBuffer(sentence.indexBuffer, DXGI_FORMAT_R32_UINT, 0);
+
+	// Set the type of primitive that should be rendered from this vertex buffer, in this case triangles.
+	D3D_context->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+	// Create a pixel color vector with the input sentence color.
+	pixelColor = sentence.Dcolor;
+
+	// Render the text using the font shader.
+	result = m_FontShader->Render(sentence.indexCount, ortho_matrix, m_Font->GetTexture(),
+		pixelColor);
+	if (!result)
+	{
+		false;
+	}
+	sentence.last_X = m_Font->get_last_pixel_position();
+
+	return true;
+}
+
+bool TextClass::create_sentence_array(int array_number)
+{
+	total_sentences = array_number;
+	m_sentence = new SentenceType[total_sentences];
+	if (!m_sentence) return false;
+
+	return true;
+}
+
+bool TextClass::update_sentence(std::string texto,
+	int pos_x, int pos_y, Color color_, int array_number)
+{
+	if (!UpdateSentence(&m_sentence[array_number], texto, pos_x, pos_y, color_)) return false;
+
+	return true;
+}
+
+int TextClass::get_last_pixel_position(int array_number)
+{
+	return m_sentence[array_number].last_X;
+}
+
+void TextClass::delete_m_sentence()
+{
+	SAFE_DELETE_ARRAY(m_sentence);
+}
+
+void TextClass::set_visible(int array_number, bool visible_)
+{
+	m_sentence[array_number].visible = visible_;
+}
