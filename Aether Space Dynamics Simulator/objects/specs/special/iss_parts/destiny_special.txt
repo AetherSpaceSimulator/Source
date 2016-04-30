@@ -1,0 +1,23 @@
+Total attached objects: 2
+
+Attached object 1: Node1
+Attached object 1 type: Spacecraft
+Attached object 1 specs: objects/specs/tech/iss_parts/node1_specs.txt
+Attached object 1 position: 0 -0.1 8.5
+Attached Rotation 1 X: 0
+Attached Rotation 1 Y: 0
+Attached Rotation 1 Z: 0
+Special: objects/specs/special/iss_parts/node1_special.txt
+
+Attached object 1: Node2
+Attached object 1 type: Spacecraft
+Attached object 1 specs: objects/specs/tech/iss_parts/node2_specs.txt
+Attached object 1 position: 0 0 -8.5
+Attached Rotation 1 X: 0
+Attached Rotation 1 Y: 0
+Attached Rotation 1 Z: 0
+Special: objects/specs/special/iss_parts/node2_special.txt
+
+Stages file: none
+
+Has animations: false

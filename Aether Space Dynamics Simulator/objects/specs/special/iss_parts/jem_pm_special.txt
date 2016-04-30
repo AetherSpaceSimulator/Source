@@ -1,0 +1,23 @@
+Total attached objects: 2
+
+Attached object 1: JEM-ELM
+Attached object 1 type: Spacecraft
+Attached object 1 specs: objects/specs/tech/iss_parts/jem_elm_specs.txt
+Attached object 1 position: 1.3 4.9 0
+Attached Rotation 1 X: 0
+Attached Rotation 1 Y: 0
+Attached Rotation 1 Z: 0
+Special: none
+
+Attached object 2: JEM-EF
+Attached object 2 type: Spacecraft
+Attached object 2 specs: objects/specs/tech/iss_parts/jem_ef_specs.txt
+Attached object 2 position: 8.2 -0.109 0.218
+Attached Rotation 2 X: 20
+Attached Rotation 2 Y: 0
+Attached Rotation 2 Z: 0
+Special: none
+
+Stages file: none
+
+Has animations: false

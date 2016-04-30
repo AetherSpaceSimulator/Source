@@ -1,0 +1,185 @@
+3D Model: models/emu/emu.txt
+
+Collision shape: compound
+Collision shape file: models/emu/convex_decomposition_collision/emu_collision.txt
+
+Camera up: 0 1 0
+
+Mass (kg): 100
+
+Rocket engine: false
+
+Main Engine Power (kN): 0
+Main Engine consumption (lt/s): 0
+RCS Power (kN): 0.025
+Hover Power (kN): 0
+
+Docking Ports: 0
+Rocket Engines: 0
+Hover Engines: 0
+
+RCS nozzles: 24
+RCS traslation enabled: true
+
+nozzle 0 position: .27 .52 0
+nozzle 1 position: -.3 .52 0
+nozzle 2 position: .27 .52 0.3
+nozzle 3 position: -.3 .52 0.3
+nozzle 4 position: .27 -.52 0
+nozzle 5 position: -.3 -.52 0
+nozzle 6 position: .27 -.52 0.3
+nozzle 7 position: -.3 -.52 0.3
+nozzle 8 position: .27 .52 0
+nozzle 9 position: -.3 .52 0
+nozzle 10 position: .27 .52 0.3
+nozzle 11 position: -.3 .52 0.3
+nozzle 12 position: .27 -.52 0
+nozzle 13 position: -.3 -.52 0
+nozzle 14 position: .27 -.52 0.3
+nozzle 15 position: -.3 -.52 0.3
+nozzle 16 position: .27 .52 0.3
+nozzle 17 position: -.3 .52 0.3
+nozzle 18 position: .27 -.52 0.3
+nozzle 19 position: -.3 -.52 0.3
+nozzle 20 position: .27 .52 0
+nozzle 21 position: -.3 .52 0
+nozzle 22 position: .27 -.52 0
+nozzle 23 position: -.3 -.52 0
+
+nozzle 0 orientation: 0 1 0
+nozzle 1 orientation: 0 1 0
+nozzle 2 orientation: 0 1 0
+nozzle 3 orientation: 0 1 0
+nozzle 4 orientation: 0 -1 0
+nozzle 5 orientation: 0 -1 0
+nozzle 6 orientation: 0 -1 0
+nozzle 7 orientation: 0 -1 0
+nozzle 8 orientation: 1 0 0
+nozzle 9 orientation: -1 0 0
+nozzle 10 orientation: 1 0 0
+nozzle 11 orientation: -1 0 0
+nozzle 12 orientation: 1 0 0
+nozzle 13 orientation: -1 0 0
+nozzle 14 orientation: 1 0 0
+nozzle 15 orientation: -1 0 0
+nozzle 16 orientation: 0 0 1
+nozzle 17 orientation: 0 0 1
+nozzle 18 orientation: 0 0 1
+nozzle 19 orientation: 0 0 1
+nozzle 20 orientation: 0 0 -1
+nozzle 21 orientation: 0 0 -1
+nozzle 22 orientation: 0 0 -1
+nozzle 23 orientation: 0 0 -1
+
+nozzle 0 size: 0.02
+nozzle 1 size: 0.02
+nozzle 2 size: 0.02
+nozzle 3 size: 0.02
+nozzle 4 size: 0.02
+nozzle 5 size: 0.02
+nozzle 6 size: 0.02
+nozzle 7 size: 0.02
+nozzle 8 size: 0.02
+nozzle 9 size: 0.02
+nozzle 10 size: 0.02
+nozzle 11 size: 0.02
+nozzle 12 size: 0.02
+nozzle 13 size: 0.02
+nozzle 14 size: 0.02
+nozzle 15 size: 0.02
+nozzle 16 size: 0.02
+nozzle 17 size: 0.02
+nozzle 18 size: 0.02
+nozzle 19 size: 0.02
+nozzle 20 size: 0.02
+nozzle 21 size: 0.02
+nozzle 22 size: 0.02
+nozzle 23 size: 0.02
+
+Forward total nozzles: 4
+Forward nozzle 1: 20
+Forward nozzle 2: 21
+Forward nozzle 3: 22
+Forward nozzle 4: 23
+
+Backward total nozzles: 4
+Backward nozzle 1: 16
+Backward nozzle 2: 17
+Backward nozzle 3: 18
+Backward nozzle 4: 19
+
+Up total nozzles: 4
+Up nozzle 1: 4
+Up nozzle 2: 5
+Up nozzle 3: 6
+Up nozzle 4: 7
+
+Down total nozzles: 4
+Down nozzle 1: 0
+Down nozzle 2: 1
+Down nozzle 3: 2
+Down nozzle 4: 3
+
+Right total nozzles: 4
+Right nozzle 1: 9
+Right nozzle 2: 11
+Right nozzle 3: 13
+Right nozzle 4: 15
+
+Left total nozzles: 4
+Left nozzle 1: 8
+Left nozzle 2: 10
+Left nozzle 3: 12
+Left nozzle 4: 14
+
++X rotation total nozzles: 4
++X nozzle 1: 16
++X nozzle 2: 17
++X nozzle 3: 22
++X nozzle 4: 23
+
+-X rotation total nozzles: 4
+-X nozzle 1: 18
+-X nozzle 2: 19
+-X nozzle 3: 20
+-X nozzle 4: 21
+
++Y rotation total nozzles: 4
++Y nozzle 1: 17
++Y nozzle 2: 19
++Y nozzle 3: 20
++Y nozzle 4: 22
+
+-Y rotation total nozzles: 4
+-Y nozzle 1: 16
+-Y nozzle 2: 18
+-Y nozzle 3: 21
+-Y nozzle 4: 23
+
++Z rotation total nozzles: 4
++Z nozzle 1: 9
++Z nozzle 2: 11
++Z nozzle 3: 12
++Z nozzle 4: 14
+
+-Z rotation total nozzles: 4
+-Z nozzle 1: 8
+-Z nozzle 2: 10
+-Z nozzle 3: 13
+-Z nozzle 4: 15
+
+Helmet camera position: 0 0.55 0
+Fuel Tank Capacity: 0
+RCS Tank Capacity: 10
+O2 Tank Capacity: 10
+Battery Capacity: 100
+Battery Charge Rate: 150
+Ground sensor distance (meters): -2.926
+Length (meters): 2
+Width (meters): 0.5
+Heigth (meters): 0.5
+Model Scale (meters): 1.28
+Wing span (meters): 0
+Forward drag coefficient: 0.205
+Min airfoil lift coefficient: 1.45
+Max airfoil lift coefficient: 3

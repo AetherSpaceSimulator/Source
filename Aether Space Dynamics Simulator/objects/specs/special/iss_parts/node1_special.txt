@@ -1,0 +1,32 @@
+Total attached objects: 3
+
+Attached object 1: Node3
+Attached object 1 type: Spacecraft
+Attached object 1 specs: objects/specs/tech/iss_parts/node3_specs.txt
+Attached object 1 position: 0 -6.3 -1.45
+Attached Rotation 1 X: 0
+Attached Rotation 1 Y: 0
+Attached Rotation 1 Z: 0
+Special: none
+
+Attached object 2: Airlock
+Attached object 2 type: Spacecraft
+Attached object 2 specs: objects/specs/tech/iss_parts/airlock_specs.txt
+Attached object 2 position: -4.6 0 -1.4
+Attached Rotation 2 X: 0
+Attached Rotation 2 Y: 0
+Attached Rotation 2 Z: 0
+Special: none
+
+Attached object 3: Zarya
+Attached object 3 type: Spacecraft
+Attached object 3 specs: objects/specs/tech/iss_parts/zarya_specs.txt
+Attached object 3 position: 0 0.85 9.75
+Attached Rotation 3 X: 0
+Attached Rotation 3 Y: 0
+Attached Rotation 3 Z: 0
+Special: objects/specs/special/iss_parts/zarya_special.txt
+
+Stages file: none
+
+Has animations: false

@@ -1,0 +1,59 @@
+Total attached objects: 6
+
+Attached object 1: PVA5
+Attached object 1 type: Spacecraft
+Attached object 1 specs: objects/specs/tech/iss_parts/pva_specs.txt
+Attached object 1 position: -4.85 -.55 -19.24
+Attached Rotation 1 X: 0
+Attached Rotation 1 Y: 0
+Attached Rotation 1 Z: 0
+Special: none
+
+Attached object 2: PVA6
+Attached object 2 type: Spacecraft
+Attached object 2 specs: objects/specs/tech/iss_parts/pva_specs.txt
+Attached object 2 position: 10.4 -.55 -19.24
+Attached Rotation 2 X: 0
+Attached Rotation 2 Y: 0
+Attached Rotation 2 Z: 0
+Special: none
+
+Attached object 3: PVA7
+Attached object 3 type: Spacecraft
+Attached object 3 specs: objects/specs/tech/iss_parts/pva_specs.txt
+Attached object 3 position: -4.85 .7 19.66
+Attached Rotation 3 X: 0
+Attached Rotation 3 Y: 180
+Attached Rotation 3 Z: 0
+Special: none
+
+Attached object 4: PVA8
+Attached object 4 type: Spacecraft
+Attached object 4 specs: objects/specs/tech/iss_parts/pva_specs.txt
+Attached object 4 position: 10.4 .7 19.66
+Attached Rotation 4 X: 0
+Attached Rotation 4 Y: 180
+Attached Rotation 4 Z: 0
+Special: none
+
+Attached object 5: Lower Radiator 3
+Attached object 5 type: Spacecraft
+Attached object 5 specs: objects/specs/tech/iss_parts/small_radiator_specs.txt
+Attached object 5 position: 6.85 -8.7 -0.4
+Attached Rotation 5 X: 0
+Attached Rotation 5 Y: 0
+Attached Rotation 5 Z: 0
+Special: none
+
+Attached object 6: Lower Radiator 4
+Attached object 6 type: Spacecraft
+Attached object 6 specs: objects/specs/tech/iss_parts/small_radiator_specs.txt
+Attached object 6 position: -8.3 -8.7 -0.4
+Attached Rotation 6 X: 0
+Attached Rotation 6 Y: 0
+Attached Rotation 6 Z: 0
+Special: none
+
+Stages file: none
+
+Has animations: false

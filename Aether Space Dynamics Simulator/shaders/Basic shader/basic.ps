@@ -1,0 +1,274 @@
+////////////////////////////////////////////////////////////////////////////////
+// Filename: light.ps
+////////////////////////////////////////////////////////////////////////////////
+
+//////////////
+// TEXTURES //
+//////////////
+Texture2D shaderTexture[3] : register(t0);
+Texture2D depthMapTexture : register(t3);
+
+
+///////////////////
+// SAMPLE STATES //
+///////////////////
+SamplerState SampleTypeClamp : register(s0);
+SamplerState SampleTypeWrap  : register(s1);
+
+
+cbuffer b_Buffer
+{
+		float has_light_map;
+		float object;
+		float has_night_map;
+		float has_atmosphere;
+		float3 Light_pos;
+		float ilumination;
+		float3 cameraPosition;
+		float transparency;
+		float3 diffuse_color_b;
+		float specular_power;
+
+		float3 orbited_pos;
+		float orbited_radius;
+
+		float3 object_pos;
+		float object_radius;
+
+		float type;
+		float has_specular_map;
+		float sun_distance;
+		float sunlit;
+
+		float3 sunset_color;
+		float camera_in_atmosphere;
+		float3 daylight_color;
+		float extra1;
+};
+
+
+//////////////
+// TYPEDEFS //
+//////////////
+struct PixelInputType
+{
+    float4 position : SV_POSITION;
+    float2 tex : TEXCOORD0;
+	float3 normal : NORMAL;
+	float3 positionW : TEXCOORD1;
+	float4 lightViewPosition : TEXCOORD2;
+	float3 lightPos : TEXCOORD3;
+};
+
+
+float4 combine_colors(float4 fg, float4 bg)
+{
+	float4 result;
+	result.a = 1.0f - (1.0f - fg.a) * (1.0f - bg.a);
+	if (result.a < 1.0e-6f) return result; // Fully transparent -- R,G,B not important
+	result.r = fg.r * fg.a / result.a + bg.r * bg.a * (1.0f - fg.a) / result.a;
+	result.g = fg.g * fg.a / result.a + bg.g * bg.a * (1.0f - fg.a) / result.a;
+	result.b = fg.b * fg.a / result.a + bg.b * bg.a * (1.0f - fg.a) / result.a;
+	return result;
+}
+
+float tangent_angle(float3 sphere_center, float sphere_radius, float3 camPos)
+{
+	float3 dir = camPos - sphere_center;
+	float len = length(dir);
+
+	//float tangent_len = sqrt(len * len - sphere_radius * sphere_radius);
+	float tangent_angle = asin(sphere_radius / len);
+
+	return tangent_angle;
+}
+
+float angle_from_two_vectors(float3 u, float3 v)
+{
+	return acos(dot(u, v) / (length(u)*length(v)));
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Pixel Shader
+////////////////////////////////////////////////////////////////////////////////
+float4 BasicPixelShader(PixelInputType input) : SV_TARGET
+{
+	float bias = 0.0001f;
+	float4 textureColor;
+	float4 textureColor2;
+	float4 textureColor3;
+	float3 lightDir;
+	float lightIntensity = 0.0f;
+	bool shadowed = false;
+	float viewIntensity;
+	float4 color = float4(0.0f, 0.0f, 0.0f, 0.0f);
+	float3 reflection;
+	float3 diffuse_color = diffuse_color_b;
+
+	float2 projectTexCoord;
+	float depthValue;
+	float lightDepthValue;
+
+	// Atmosphere parameters
+	float3 sunset_color = float3(1.0f, 0.6f, 0.0f);
+	float3 daylight_color = float3(0.0f, 0.0f, 1.0f);
+	float3 sunlight_color = float3(1.0f, 1.0f, 1.0f);
+	float atmosphere_thickness = 0.5f;
+	
+	// variables for calculating specular lights
+    float4 specular_color = float4(1.0f, 1.0f, 1.0f, 1.0f);
+	float specularPower= 0.0f;
+	float3 viewDirection=normalize(cameraPosition - input.positionW);
+
+	lightDir = normalize(Light_pos - input.positionW);
+
+	float sunset_intensity = dot(input.normal, lightDir);
+
+	// Calculate the projected texture coordinates.
+	projectTexCoord.x =  input.lightViewPosition.x / input.lightViewPosition.w / 2.0f + 0.5f;
+	projectTexCoord.y = -input.lightViewPosition.y / input.lightViewPosition.w / 2.0f + 0.5f;
+
+	if((saturate(projectTexCoord.x) == projectTexCoord.x) && (saturate(projectTexCoord.y) == projectTexCoord.y))
+	{
+		float4 color_d = depthMapTexture.Sample(SampleTypeClamp, projectTexCoord);
+
+		// Sample the shadow map depth value from the depth texture using the sampler at the projected texture coordinate location.
+		depthValue = color_d.r;
+
+		// Calculate the depth of the light.
+		lightDepthValue = input.lightViewPosition.z / input.lightViewPosition.w;
+
+		// Subtract the bias from the lightDepthValue.
+		lightDepthValue = lightDepthValue - bias;
+
+		// Compare the depth of the shadow map value and the depth of the light to determine whether to shadow or to light this pixel.
+		// If the light is in front of the object then light the pixel, if not then shadow this pixel since an object (occluder) is casting a shadow on it.
+		if(lightDepthValue < depthValue)
+		{
+		    // Calculate the amount of light on this pixel.
+			lightIntensity = saturate(dot(input.normal, lightDir));
+
+			// if the objects is a ring system then increase the light on the shadowed side
+			if (type==8.0f && lightIntensity<0.15f) lightIntensity = 0.15f;
+		}
+
+		else
+		{
+			shadowed = true;
+			lightIntensity = saturate(dot(input.normal, lightDir))*(1.0f - color_d.g);
+		}
+	}
+
+	else lightIntensity = saturate(sunset_intensity);
+
+	if ((type == 4.0f || type == 3.0f || type == 10.0f  || type == 11.0f) && sunlit==0.0f) lightIntensity = 0.0f; // anular la iluminacion solar si esta se ve obstruida por un planeta o luna
+
+	viewIntensity = saturate(dot(input.normal, viewDirection));
+
+
+
+	if (has_atmosphere > 0.0f) diffuse_color = (sunlight_color * sunset_intensity) + (sunset_color * (1.0f - sunset_intensity));
+
+	// set a soft transition from sunset to deep night
+	if (has_atmosphere > 0.0f && sunset_intensity < 0.0f)
+	{
+		float a= sqrt(abs(sunset_intensity));
+		diffuse_color *= 1.0f - a;
+		diffuse_color += a;
+	}
+
+	textureColor = shaderTexture[0].Sample(SampleTypeWrap, input.tex);
+	textureColor2 = shaderTexture[1].Sample(SampleTypeWrap, input.tex);
+	textureColor3 = shaderTexture[2].Sample(SampleTypeWrap, input.tex);
+
+	float3 raydir = normalize(input.positionW - Light_pos);
+		
+		if(lightIntensity > 0.0f || ilumination> 0.0f )
+		{
+			if (object == 0.0f) color += (float4(diffuse_color, 1.0f) * ilumination); // sunlight doesn't affect the starfield
+			else color += (float4(diffuse_color, 1.0f) * max(ilumination, lightIntensity));
+		}
+	
+		// Saturate the final light color.
+		color = saturate(color);
+
+		color *= textureColor;
+
+
+		if (has_night_map && (!shadowed) || (has_night_map && camera_in_atmosphere>=1.f))  //  esto hace que las sombras sobre ciudades se dibujen bien, pero las luces no se ven desde el espacio
+		{
+			textureColor2*= 2.0f - min(2.0f, lightIntensity * 2.0f);
+			textureColor2.a*=(textureColor2.r + textureColor2.g + textureColor2.b) * 0.7f; // increase the brightness of the city lights
+			textureColor2.a*= (1.0f - lightIntensity) / 200.0f;
+			color = combine_colors(textureColor2, color);
+		}
+
+		if (has_light_map) color += textureColor2;
+
+
+		color.a= min(transparency, textureColor.a);
+
+
+		// Apply specular color
+
+		if (specular_power>0.0f)
+		{
+			if(lightIntensity > 0.0f)
+			{
+				reflection = normalize(2.0f * lightIntensity * input.normal - lightDir); 
+				specular_color *= pow(saturate(dot(reflection, viewDirection)), 32.0f);
+				float specular_power_b= specular_power/1000;
+				specular_color*=specular_power_b;
+
+				color = saturate(color + (specular_color * min(1.0f, lightIntensity * 5.0f)));
+			}
+		}
+
+		if (has_specular_map > 0.0f)
+		{
+			if(lightIntensity > 0.0f)
+			{
+				if (has_atmosphere > 0.0f) specular_color.rgb = (sunlight_color * lightIntensity) + (sunset_color * (1.0f - lightIntensity));
+
+				reflection = normalize(2.0f * lightIntensity * input.normal - lightDir); 
+				specular_color *= pow(saturate(dot(reflection, viewDirection)), 32.0f);
+				if (textureColor3.r > 0.0f) specular_color *= abs(1.0f - textureColor3.r);
+
+				if (type == 2.0f || type== 9.0f) specular_color *= 0.7; // reducimos el brillo especular en los planetas
+
+				color = color + (specular_color*min(1.0f, lightIntensity * 5.0f));
+			}
+		}
+
+		// hacer los bordes del planeta mas claros
+		if (has_atmosphere > 0.0f)
+		{
+			float suma= ((1.0f - viewIntensity)*(1.0f - viewIntensity)*(1.0f - viewIntensity))*(lightIntensity*lightIntensity);
+			if (camera_in_atmosphere<=1) suma *= camera_in_atmosphere;
+			color.rgb += suma;
+		}
+
+		// hacemos brillar el lugar donde esta el sol
+		float angulo_de_brillo = 0.98f;
+		if (sun_distance<2.0e10f) angulo_de_brillo = 0.5f;
+
+		if (object == 0.0f && camera_in_atmosphere > 1.0f) // si el objeto es el fondo estelar
+		{
+			float angulo= dot(normalize(Light_pos - cameraPosition), normalize(input.positionW - cameraPosition));
+			if (angulo > angulo_de_brillo)
+			{
+				specular_color = float4(1.0f, 0.9f, 0.8f, 1.0f);
+				specular_color *= pow(saturate(angulo), sun_distance / 7.0e7f);
+
+				color += specular_color * 1.25f;
+			}
+		}
+
+		color=saturate(color);
+
+		//float average= (color.r+color.g+color.b)/3.0f;
+		//return float4(average,average,average, color.a);
+
+		return color;
+
+}

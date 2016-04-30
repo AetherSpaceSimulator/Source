@@ -1,0 +1,110 @@
+Focus on: EMU
+
+Object: Sun
+Type: Star
+Mass (kg): 1988500e24
+Semi major axis (AU): 0
+Eccentricity: 0
+Inclination (degrees): 0
+Argument of perigee (degrees): 0
+Longitude of ascending node (degrees): 0
+True anomaly (degrees): 0
+Obliquity to orbit (degrees): 0
+Initial rotation (degrees): 0
+Sidereal rotation period (hours): 0
+Orbiting: Galaxy center
+Equatorial radius (meters): 695800000.0
+Polar radius (meters): 695800000.0
+3D Model: sphere
+Texture day: textures/low_res/Sun/sun_diffuse.jpg
+Texture night: none
+Specular map: none
+Ephemeris: none
+
+Object: Earth
+Type: Planet
+Mass (kg): 5.97219e24
+Semi major axis (AU): 0.9992409271059109
+Eccentricity: 0.01610306060820127
+Inclination (degrees): 0.001342924893215605
+Argument of perigee (degrees): 318.2660038464720
+Longitude of ascending node (degrees): 146.4622284690755
+True anomaly (degrees): 302.5727034799227
+Obliquity to orbit (degrees): 23.44
+Initial rotation (degrees): 231.0
+Sidereal rotation period (hours): 23.93446959189802
+Orbiting: Sun
+Equatorial radius (meters): 6378137.0
+Polar radius (meters) 6356752.3: 6378137.0
+Has an atmosphere: true
+---Atmosphere ratio (80 kms. up to the Thermosphere): 1.0125428475431
+------Sunset color (RGB): 1.0 0.6 0.0
+------Daylight color (RGB): 0.0 0.0 1.0
+------Atmosphere_thickness: 0.5
+------Sea level pressure (Pa): 101325
+------Sea level temperature (Celsius): 15
+------Sea level density (kg/m3): 1.225
+---Has clouds: true
+------Clouds ratio (10 kms. up to the Stratosphere): 1.0015678559429
+---------Clouds texture: textures/high_res/Earth/earth_clouds.png
+Has rings: false
+3D Model: sphere
+Texture day: textures/high_res/earth/earth_diffuse.jpg
+Texture night: textures/high_res/earth/earth_lights.jpg
+Specular map: textures/high_res/earth/earth_specular.jpg
+Ephemeris: ephemeris/399_earth.txt
+
+Object: Moon
+Type: Natural satellite
+Mass (kg): 0.07342e24
+Semi major axis (AU): 0.002569082024849072
+Eccentricity: 0.05719587788926914
+Inclination (degrees): 5.218071515389683
+Argument of perigee (degrees): 139.4733808717922
+Longitude of ascending node (degrees): 198.7555392631079
+True anomaly (degrees): 107.0358496848421
+Obliquity to orbit (degrees): 6.68
+Initial rotation (degrees) (80.0): 1.0
+Sidereal rotation period (hours 655.728): 642.25
+Orbiting: Earth
+Equatorial radius (meters): 1738100.0
+Polar radius (meters) 1736000.0: 1738100.0
+3D Model: sphere
+Texture day: textures/high_res/moon/moon_diffuse.jpg
+Texture night: none
+Specular map: none
+Ephemeris: ephemeris/301_moon.txt
+
+Object: ISS Main Truss
+Type: Spacecraft
+Specs: objects/specs/tech/iss_parts/main_truss_specs.txt
+In Orbit: true
+Semi major axis (AU): 0.000045375275
+Eccentricity: 0.001271600979378242
+Inclination (degrees): 57.79171360492632
+Argument of perigee (degrees): 56.37644115298793
+Longitude of ascending node (degrees): 112.8296225596619
+True anomaly (degrees): 209.4449484244006
+Obliquity to orbit (degrees): 0
+Initial rotation (degrees): 0
+Sidereal rotation period (hours): 0
+Orbiting: Earth
+Ephemeris: ephemeris/-1255444_iss.txt
+Special: objects/specs/special/iss_parts/main_truss_special.txt
+
+Object: EMU
+Type: Spacecraft
+Specs: objects/specs/tech/emu_specs.txt
+In Orbit: true
+Semi major axis (AU): 0.0000453752
+Eccentricity: 0.001271600979378242
+Inclination (degrees): 57.79171360492632
+Argument of perigee (degrees): 56.37644115298793
+Longitude of ascending node (degrees): 112.8296225596619
+True anomaly (degrees): 209.4449484244006
+Obliquity to orbit (degrees): 0
+Initial rotation (degrees): 0
+Sidereal rotation period (hours): 0
+Orbiting: Earth
+Ephemeris: ephemeris/-1255444_iss.txt
+Special: none

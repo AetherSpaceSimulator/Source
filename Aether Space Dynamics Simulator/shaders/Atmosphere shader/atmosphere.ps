@@ -1,0 +1,163 @@
+////////////////////////////////////////////////////////////////////////////////
+// Filename: light.ps
+////////////////////////////////////////////////////////////////////////////////
+
+
+/////////////
+// GLOBALS //
+/////////////
+Texture2D shaderTexture[2];
+SamplerState SampleType;
+
+cbuffer b_Buffer
+{
+		float planet_scale;
+		float object;
+		float type;
+		float camera_in_atmosphere;
+		float3 Light_pos;
+		float atmosphere_scale;
+		float3 cameraPosition;
+		float transparency;
+		float3 planet_position;
+		float specular_power;
+
+		float3 sunset_color;
+		float sun_distance;
+		float3 daylight_color;
+		float atmosphere_thickness;
+};
+
+
+//////////////
+// TYPEDEFS //
+//////////////
+struct PixelInputType
+{
+    float4 position : SV_POSITION;
+    float2 tex : TEXCOORD0;
+	float3 normal : NORMAL;
+	float3 positionW : TEXCOORD1;
+};
+
+float tangent_angle(float3 sphere_center, float sphere_radius, float3 camPos)
+{
+	float3 dir = camPos - sphere_center;
+
+	//float tangent_len = sqrt(len*len - sphere_radius*sphere_radius);
+	//float tangent_angle = acos(sphere_radius / length(dir))
+	float tangent_angle = asin(sphere_radius / length(dir));
+
+	return tangent_angle;
+}
+
+float angle_from_two_vectors(float3 u, float3 v)
+{
+	return acos(dot(u, v) / (length(u)*length(v)));
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Pixel Shader
+////////////////////////////////////////////////////////////////////////////////
+float4 AtmospherePixelShader(PixelInputType input) : SV_TARGET
+{
+	float horizon_brightness = 0.8f;
+	float4 textureColor;
+	float4 textureColor2;
+	float3 lightDir = normalize(Light_pos-input.positionW);
+	float lightIntensity = dot(input.normal, lightDir);
+	float sunset_intensity = lightIntensity;
+	lightIntensity=saturate(lightIntensity);
+	float4 color = float4(0.0f, 0.0f, 0.0f, 1.0f);
+
+	textureColor = shaderTexture[0].Sample(SampleType, input.tex);
+	textureColor2 = shaderTexture[1].Sample(SampleType, input.tex);
+
+   color.rgb=(daylight_color*lightIntensity)+(sunset_color*(1-lightIntensity));	
+
+   if (camera_in_atmosphere > 1.0f)
+   {
+		float min_angle = tangent_angle(planet_position, planet_scale, cameraPosition); // calculo correcto
+		//float min_angle = tangent_angle(planet_position, planet_scale/1.00025, cameraPosition); // un intento de disminuir el artefacto visual del horizonte
+		// debido a que las esferas de la tierra y la atmosfera no son esferas perfectas sino un grupo de triangulos, lo que causa
+		// inconsistencias en las uniones
+		float max_angle = tangent_angle(planet_position, atmosphere_scale, cameraPosition);
+		float pixel_angle = abs(angle_from_two_vectors(cameraPosition-planet_position, cameraPosition - input.positionW));
+		float range = (pixel_angle - min_angle) / (max_angle - min_angle); // transform the range of the altitude to 0-1 keeping the ratio
+	
+				// create the bright halo close to the surface
+				float4 color_b;
+				color_b.r= max(color.r, horizon_brightness-sqrt(range));
+				color_b.g= max(color.g, horizon_brightness-sqrt(range));
+				color_b.b= max(color.b, horizon_brightness-sqrt(range));
+				color_b.a= (1-sqrt(range)) * lightIntensity;
+				color_b*= lightIntensity;
+
+				color+= color_b;
+
+				// make the higher altitudes more transparent
+				float a= 1-sqrt(range);
+				if (a < 0.0f) a = 0.0f;
+				float b= sqrt(lightIntensity);
+				float atmospheric_transparency = a* a * b;
+
+				color.a *= atmospheric_transparency;
+
+				return color;
+	}
+
+		else 
+		{
+		float phi = 3.1415926535f;
+
+		float min_angle = tangent_angle(planet_position, planet_scale, cameraPosition); // calculo correcto
+		float pixel_angle = abs(angle_from_two_vectors(cameraPosition-planet_position, cameraPosition - input.positionW));
+		float range = (pixel_angle - min_angle) / ( min( phi, phi / 2.0f + (1.0f - camera_in_atmosphere)) - min_angle);
+
+	
+				// create the bright halo close to the surface
+				float4 color_b;
+				color_b.r= max(color.r, horizon_brightness-sqrt(range));
+				color_b.g= max(color.g, horizon_brightness-sqrt(range));
+				color_b.b= max(color.b, horizon_brightness-sqrt(range));
+				color_b.a= (1-sqrt(range)) * lightIntensity;
+				color_b*= lightIntensity;
+
+				color+= color_b;
+
+
+				// make the higher altitudes more transparent
+				float atmosphere_density = 1-camera_in_atmosphere;
+				float estrellas_visibles= 5*atmosphere_density*lightIntensity;
+				//color=combine_colors(textureColor*saturate(estrellas_visibles), color);
+				color.a = max(((1-sqrt(range)) * sqrt(lightIntensity)), estrellas_visibles);
+
+				color.a = max(0.1f*atmosphere_density, color.a);
+				// set a soft transition from sunset to deep night
+				if (sunset_intensity < 0.0f)
+				{
+					float a= sqrt(abs(sunset_intensity));
+					a = ((1.0f - a) / 10.0f)*atmosphere_density;
+					color.a = saturate(min(color.a, a));
+				}
+				
+				color=abs(color);
+
+		// hacemos brillar el lugar donde esta el sol
+		float angulo_de_brillo = 0.98f;
+		if (sun_distance<2.0e10f) angulo_de_brillo = 0.5f;
+
+		float angulo= dot(normalize(Light_pos - cameraPosition), normalize(input.positionW - cameraPosition));
+		if (angulo > angulo_de_brillo)
+		{
+			float4 specular_color = float4(1.0f, 0.9f, 0.8f, 1.0f);
+			specular_color *= pow(saturate(angulo), sun_distance / 7.0e7f);
+			
+			color += specular_color * 1.25f;
+		}
+
+		return color;
+	}
+
+}

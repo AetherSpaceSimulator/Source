@@ -1,0 +1,23 @@
+Total attached objects: 2
+
+Attached object 1: Zvezda
+Attached object 1 type: Spacecraft
+Attached object 1 specs: objects/specs/tech/iss_parts/zvezda_specs.txt
+Attached object 1 position: 0 0 12.85
+Attached Rotation 1 X: 0
+Attached Rotation 1 Y: 0
+Attached Rotation 1 Z: 0
+Special: objects/specs/special/iss_parts/zvezda_special.txt
+
+Attached object 2: MLM
+Attached object 2 type: Spacecraft
+Attached object 2 specs: objects/specs/tech/iss_parts/mlm_specs.txt
+Attached object 2 position: 0 -5.6 -4.95
+Attached Rotation 2 X: 0
+Attached Rotation 2 Y: 0
+Attached Rotation 2 Z: 0
+Special: none
+
+Stages file: none
+
+Has animations: false

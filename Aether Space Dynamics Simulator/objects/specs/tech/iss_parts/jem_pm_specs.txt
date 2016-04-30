@@ -1,0 +1,36 @@
+3D Model: models/iss_parts/jem_pm.txt
+
+Collision shape: compound
+Collision shape file: models/iss_parts/jem_pm_collision.txt
+
+Camera up: 0 1 0
+
+Mass (kg): 15900
+Rocket engine: false
+
+Main Engine Power (kN): 0
+Main Engine consumption (lt/s): 0
+RCS Power (kN): 0
+Hover Power (kN): 0
+
+Docking Ports: 0
+Rocket Engines: 0
+Hover Engines: 0
+RCS nozzles: 0
+
+Cockpit camera position: 0.023 -0.045 0.044
+Fuel Tank Capacity: 0
+RCS Tank Capacity: 0
+O2 Tank Capacity: 0
+Battery Capacity: 0
+Battery Charge Rate: 0
+Ground sensor distance: -1
+Length: 7.63
+Width: 3.924
+Heigth: 3.924
+Model Scale (meters): 7.63
+Wing span: 109
+Forward drag coefficient: 0.205
+Min airfoil lift coefficient: 0.5
+Max airfoil lift coefficient: 1.45
+

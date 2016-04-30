@@ -1,0 +1,111 @@
+////////////////////////////////////////////////////////////////////////////////
+// Filename: texture.ps
+////////////////////////////////////////////////////////////////////////////////
+
+
+/////////////
+// GLOBALS //
+/////////////
+Texture2D shaderTexture[4];
+SamplerState SampleType;
+
+cbuffer texture_Buffer
+{
+	float4 color_;
+	float3 lightPos;
+	float extra1;
+	float tipo_;
+	float mouse_status;
+	float dimmed;
+	float extra2;
+}
+
+
+//////////////
+// TYPEDEFS //
+//////////////
+struct PixelInputType
+{
+    float4 position : SV_POSITION;
+    float2 tex : TEXCOORD0;
+};
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Pixel Shader
+////////////////////////////////////////////////////////////////////////////////
+float4 TexturePixelShader(PixelInputType input) : SV_TARGET
+{
+	float4 textureColor1;
+	float4 textureColor2;
+	float4 textureColor3;
+	float4 textureColor4;
+
+	float4 color = float4(1.0f, 1.0f, 1.0f, 0.0f) + color_;
+	float4 pure_color = color_;
+
+    // Sample the pixel color from the texture using the sampler at this texture coordinate location.
+    textureColor1 = shaderTexture[0].Sample(SampleType, input.tex);
+	textureColor2 = shaderTexture[1].Sample(SampleType, input.tex);
+	textureColor3 = shaderTexture[2].Sample(SampleType, input.tex);
+	textureColor4 = shaderTexture[3].Sample(SampleType, input.tex);
+
+    if (tipo_ == 1.0f) color*= float4(0.05f, 0.15f, 0.16f, 0.9f); // barra de titulo
+	else if (tipo_ == 2.0f) color*= float4(0.1f, 0.1f, 0.11f, 0.7f); // fondo de ventana
+
+	else if (tipo_ == 3.0f) // boton
+	{
+		if (mouse_status == 1.0f) color*= textureColor2;
+		else if (mouse_status == 2.0f) color*= textureColor3;
+		else color*= textureColor1;
+	}
+
+	else if (tipo_ == 4.0f) // imagen de fondo de ventana
+	{
+		color = textureColor1;
+		color.a = 0.9f;
+	}
+
+	else if (tipo_ == 5.0f) // fondo del textbox
+	{
+		pure_color.a = 0.8f;
+		return pure_color;
+	}
+
+	else if (tipo_ == 6.0f || tipo_ == 8.0f) // map pointer
+	{
+		color = textureColor1;
+	}
+
+	else if (tipo_ == 7.0f) // imagen de fondo de ventana con mapa de luz solar
+	{
+		float x = (input.tex.x - 0.5) * 6.2831853;
+        float y = (input.tex.y - 0.5) * 3.1415629;
+
+		// 2D -> 3D
+		float3 pointa = float3( sin(x) * cos(y), sin(y), cos(x) * cos(y));
+
+		 // get light level with dot product
+		float l = clamp(dot(pointa, lightPos), 0.7f, 1.0);
+
+		color = textureColor1 * l;
+		color.a = 0.9f;
+	}
+
+	else if (tipo_ == 9.0f) // pure unmodified texture
+	{
+		color = textureColor1;
+	}
+
+	else if (tipo_ == 10.0f) // fondo de ventana persoalizado
+	{
+		color = textureColor1;
+	}
+
+	color=saturate(color);
+
+	if (dimmed!=0.0f) color.a/=dimmed;
+
+
+	return color;
+}

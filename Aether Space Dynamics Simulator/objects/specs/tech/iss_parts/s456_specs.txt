@@ -1,0 +1,36 @@
+3D Model: models/iss_parts/s456.txt
+
+Collision shape: compound
+Collision shape file: models/iss_parts/s456_collision.txt
+
+Camera up: 0 1 0
+
+Mass (kg): 5700
+Rocket engine: false
+
+Main Engine Power (kN): 0
+Main Engine consumption (lt/s): 0
+RCS Power (kN): 0
+Hover Power (kN): 0
+
+Docking Ports: 0
+Rocket Engines: 0
+Hover Engines: 0
+RCS nozzles: 0
+
+Cockpit camera position: 0.023 -0.045 0.044
+Fuel Tank Capacity: 0
+RCS Tank Capacity: 0
+O2 Tank Capacity: 0
+Battery Capacity: 0
+Battery Charge Rate: 0
+Ground sensor distance: -1
+Length: 21.8
+Width: 2.24
+Heigth: 2.24
+Model Scale (meters): 21.8
+Wing span: 109
+Forward drag coefficient: 0.205
+Min airfoil lift coefficient: 0.5
+Max airfoil lift coefficient: 1.45
+

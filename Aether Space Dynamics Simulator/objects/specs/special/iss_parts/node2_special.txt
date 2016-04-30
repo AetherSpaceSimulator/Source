@@ -1,0 +1,23 @@
+Total attached objects: 2
+
+Attached object 1: Columbus
+Attached object 1 type: Spacecraft
+Attached object 1 specs: objects/specs/tech/iss_parts/columbus_specs.txt
+Attached object 1 position: -5 .4 1.4
+Attached Rotation 1 X: 0
+Attached Rotation 1 Y: 0
+Attached Rotation 1 Z: 0
+Special: none
+
+Attached object 2: JEM-PM
+Attached object 2 type: Spacecraft
+Attached object 2 specs: objects/specs/tech/iss_parts/jem_pm_specs.txt
+Attached object 2 position: 5.85 .1 1.4
+Attached Rotation 2 X: 0
+Attached Rotation 2 Y: 0
+Attached Rotation 2 Z: 0
+Special: objects/specs/special/iss_parts/jem_pm_special.txt
+
+Stages file: none
+
+Has animations: false
